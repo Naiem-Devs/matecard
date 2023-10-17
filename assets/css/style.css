@@ -1,5 +1,5 @@
 /*   Theme default css */
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @font-face {
   font-family: Helvetica;
@@ -10,6 +10,7 @@
 
 /* ======font family=========
 font-family: 'Lato', sans-serif;
+font-family: 'Open Sans', sans-serif;
 font-family: 'Poppins', sans-serif;
 font-family: 'Raleway', sans-serif;
 font-family: Helvetica;
@@ -140,12 +141,30 @@ li {
 .mt_50{margin-top: 50px;}
 
 
+
+@keyframes floating {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(0, 15px); }
+  100%   { transform: translate(0, -0px); }    
+}
+
+@keyframes floatingX {
+  0% { transform: translate(0,  0px); }
+  50%  { transform: translate(30px, 0px); }
+  100%   { transform: translate(-0px, 0px); }    
+}
+
+@keyframes floatingZ {
+  0% { transform: scale(.7); }
+  50%  { transform: scale(1); }
+  100%   { transform: scale(.7); }    
+}
 /* default-css END 
 ================================== */
  
 .thm_btn{}
 
-.container {position: relative;}
+.container {position: relative; }
 /*============hero Area Start =============*/
 
 .hero-area {background: var(--thmColor);padding: 65px 0 125px;position: relative;overflow: hidden;}
@@ -156,15 +175,21 @@ li {
     right: 0;
 }
 .h-1 {left: 0;}
-.h-2 {left: 184px;top: 24%;}
-.h-3 {top: 50%;left: -100px;}
-.h-4 {top: -115px;left: 16%;}
-.h-5 {right: -60px;top: 21%;}
-.h-6 {top: 57%;right: 13%;}
+.h-2 {left: 184px;top: 24%;animation: floatingZ 3s ease-in-out infinite;}
+.h-3 {top: 50%;left: -100px;animation: floating 3s ease-in-out infinite;}
+.h-4 {top: -115px;left: 16%;animation: floatingZ 5s ease-in-out infinite;}
+.h-5 {right: -60px;top: 21%;animation: floating 3s ease-in-out infinite;animation-delay: 1.5s;}
+
+img.h-5.aos-init.aos-animate {}
+.h-6 {top: 57%;right: 13%;animation: floatingZ 3s ease-in-out infinite;animation-delay: 1.5s;}
 .h-7 {right: -68px;top: 58%;}
-.h-8 {right: 100px;bottom: 100px;max-width: 160px;}
+.h-8 {right: 100px;bottom: 100px;max-width: 160px;animation: floatingX 4s ease-in-out infinite;animation-delay: 1.5s;}
 
 .logo {text-align: center;}
+
+.logo img {
+    object-fit: cover;
+}
 
 .logo a {
     display: block;
@@ -190,6 +215,8 @@ li {
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
     left: 0;
+    object-fit: cover;
+    border-radius: 20px;
 }
 
 img.back {
@@ -200,6 +227,7 @@ img.back {
 .hero-text p {
     font-family: var(--Helvetica);
     font-size: var(--f20);
+    font-family: 'Open Sans', sans-serif;
 }
 
 .hero-text span {
@@ -246,20 +274,22 @@ section.blog-area .conatiner {}
     position: absolute;
     z-index: 0;
 }
-.b-1 {left: 50%;top: -30px;transform: translateX(-50%);}
-.b-2 {right: 10%;top: 28px;max-width: 300px;}
-.b-3 {top: 47%;left: 4%;}
-.b-4 {top: 53%;left: 57%;transform: translate(-50%, -50%);}
-.b-5 {top: 69%;left: 1%;}
+.b-1 {left: 50%;top: -30px;transform: translateX(-50%);/* animation: floatingX 3s ease-in-out infinite; */}
+.b-2 {right: 10%;top: 28px;max-width: 300px;animation: floatingX 4s ease-in-out infinite;}
+.b-3 {top: 47%;left: 4%;animation: floatingX 4s ease-in-out infinite;}
+.b-4 {top: 49%;left: 55%;transform: translate(-50%, -50%);animation: floating 3s ease-in-out infinite;}
+.b-5 {top: 69%;left: 1%;animation: floating 3s ease-in-out infinite;}
 
 img.b-7 {
     right: 5%;
     top: 30%;
+    animation: floatingZ 3s ease-in-out infinite;
 }
 
 img.b-6 {
     top: 50%;
     left: 33%;
+    animation: floatingZ 4s ease-in-out infinite;
 }
 .blog_img {text-align: right;}
 
@@ -299,6 +329,10 @@ img.b-6 {
     text-align: left;
 }
 
+.blog_content ul li p {
+    font-family: 'Open Sans', sans-serif;
+}
+
 .blog_content ul li i {
     flex-shrink: 0;
 }
@@ -309,10 +343,10 @@ img.b-6 {
 /*============emag Area Start =============*/
 
 .emag-area {background: var(--thmColor);color: #fff;position: relative;overflow: hidden;}
-.em-1 {top: 50px;left: 20%;}
-.em-2 {left: -70px;bottom: 48px;}
-.em-3 {bottom: 33px;max-width: 124px;left: 15%;}
-.em-4 {right: -60px;top: 80px;}
+.em-1 {top: 50px;left: 20%;animation: floatingZ 3s ease-in-out infinite;}
+.em-2 {left: -70px;bottom: 48px;animation: floatingX 3s ease-in-out infinite;}
+.em-3 {bottom: 33px;max-width: 124px;left: 15%;animation: floatingX 3s ease-in-out infinite;}
+.em-4 {right: -60px;top: 80px;animation: floating 3s ease-in-out infinite;}
 .emag_content {text-align: center;padding: 120px 0 100px;position: relative;}
 
 .emag_content a {
@@ -344,18 +378,19 @@ img.b-6 {
 /*============product Area Start =============*/
 
 .product-area {padding: 80px 0;position: relative;}
-.pd-1 {top: 50px;left: 10%;}
-.pd-2 {right: 10%;}
-.pd-3 {top: 33%;left: 0;}
-.pd-4 {top: 36%;left: -128px;}
-.pd-5 {top: 64%;right: 5%;}
-.pd-6 {bottom: 14%;left: 5%;}
+.pd-1 {top: 50px;left: 10%;animation: floatingZ 3s ease-in-out infinite;}
+.pd-2 {right: 10%;animation: floatingX 3s ease-in-out infinite;}
+.pd-3 {top: 33%;left: 0;animation: floating 4s ease-in-out infinite;}
+.pd-4 {top: 36%;left: -128px;animation: floating 4s ease-in-out infinite;animation-delay: 1s;}
+.pd-5 {top: 64%;right: 5%;animation: floating 3s ease-in-out infinite;}
+.pd-6 {bottom: 14%;left: 5%;animation: floatingX 3s ease-in-out infinite;}
 .product_blk {display: flex;align-items: center;gap: 20px 50px;margin-bottom: 120px;max-width: 1200px;margin-inline: auto;position: relative;text-align: left;}
 
 .product_blk ul li {
     font-size: var(--f20);
     margin-bottom: 8px;
     text-align: left;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .product_blk h3 {
